@@ -1,0 +1,30 @@
+<% layout("layout") %>
+
+<h1 class="text-center">📚 Book Results for "<%= query %>"</h1>
+
+<!-- ✅ Only display error message if 'error' is defined and not empty -->
+<% if (typeof error !== "undefined" && error) { %>
+    <div class="alert alert-danger text-center"><%= error %></div>
+<% } %>
+
+<% if (books.length > 0) { %>
+    <div class="row">
+        <% books.forEach(book => { %>
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-4">
+                    <% if (book.volumeInfo.imageLinks) { %>
+                        <img src="<%= book.volumeInfo.imageLinks.thumbnail %>" class="card-img-top" alt="<%= book.volumeInfo.title %>">
+                    <% } %>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= book.volumeInfo.title %></h5>
+                        <p class="card-text"><strong>Author(s):</strong> <%= book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown" %></p>
+                        <p class="card-text"><%= book.volumeInfo.description || "No description available." %></p>
+                        <a href="<%= book.volumeInfo.previewLink %>" class="btn btn-primary" target="_blank">View on Google Books</a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+<% } else { %>
+    <p class="text-center text-muted">No books found.</p>
+<% } %>
