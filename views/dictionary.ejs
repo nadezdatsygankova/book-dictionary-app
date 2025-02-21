@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary Results</title>
+</head>
+<body>
+    <h1>Definition of "<%= word %>"</h1>
+    <a href="/">Go Back</a>
+
+    <% if (error) { %>
+        <p><%= error %></p>
+    <% } else { %>
+        <p><strong>Phonetic:</strong> <%= wordData.phonetics[0]?.text || "No phonetic available" %></p>
+        <p><strong>Definition:</strong> <%= wordData.meanings[0].definitions[0].definition %></p>
+    <% } %>
+</body>
+</html>
