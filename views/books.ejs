@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Results</title>
+</head>
+<body>
+    <h1>Book Results for "<%= query %>"</h1>
+    <a href="/">Go Back</a>
+
+    <% if (error) { %>
+        <p><%= error %></p>
+    <% } else { %>
+        <% books.forEach(book => { %>
+            <div>
+                <h3><%= book.volumeInfo.title %></h3>
+                <p><strong>Author(s):</strong> <%= book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown" %></p>
+                <p><strong>Description:</strong> <%= book.volumeInfo.description || "No description available." %></p>
+                <% if (book.volumeInfo.imageLinks) { %>
+                    <img src="<%= book.volumeInfo.imageLinks.thumbnail %>" alt="<%= book.volumeInfo.title %>">
+                <% } %>
+                <hr>
+            </div>
+        <% }); %>
+    <% } %>
+</body>
+</html>
