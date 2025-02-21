@@ -1,0 +1,21 @@
+
+body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}

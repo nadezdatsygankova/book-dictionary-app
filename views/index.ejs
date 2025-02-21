@@ -1,24 +1,22 @@
+<%- layout('layout') -%>
+<h1 class="text-center">📚 Welcome to the Book & Dictionary Search</h1>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book & Dictionary Search</title>
-</head>
-<body>
-    <h1>Welcome to the Book & Dictionary Search App</h1>
+<div class="d-flex justify-content-center">
+    <div class="card p-4 shadow-sm" style="max-width: 500px;">
+        <h2 class="text-center">Search for Books</h2>
+        <form action="/books" class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Enter book title or author">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</div>
 
-    <h2>Search for Books</h2>
-    <form action="/books">
-        <input type="text" name="q" placeholder="Enter book title or author">
-        <button type="submit">Search</button>
-    </form>
-
-    <h2>Search for Word Definitions</h2>
-    <form action="/dictionary">
-        <input type="text" name="word" placeholder="Enter a word">
-        <button type="submit">Search</button>
-    </form>
-</body>
-</html>
+<div class="d-flex justify-content-center mt-4">
+    <div class="card p-4 shadow-sm" style="max-width: 500px;">
+        <h2 class="text-center">Search for a Word</h2>
+        <form action="/dictionary" class="input-group">
+            <input type="text" name="word" class="form-control" placeholder="Enter a word">
+            <button type="submit" class="btn btn-success">Search</button>
+        </form>
+    </div>
+</div>

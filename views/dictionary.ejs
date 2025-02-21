@@ -1,20 +1,59 @@
+<% layout("layout") %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dictionary Results</title>
-</head>
-<body>
-    <h1>Definition of "<%= word %>"</h1>
-    <a href="/">Go Back</a>
+<h1 class="text-center">📖 Definition of "<%= word %>"</h1>
 
-    <% if (error) { %>
-        <p><%= error %></p>
-    <% } else { %>
-        <p><strong>Phonetic:</strong> <%= wordData.phonetics[0]?.text || "No phonetic available" %></p>
-        <p><strong>Definition:</strong> <%= wordData.meanings[0].definitions[0].definition %></p>
-    <% } %>
-</body>
-</html>
+<!-- ✅ Only show error message if it exists -->
+<% if (typeof error !== "undefined" && error) { %>
+    <div class="alert alert-danger text-center"><%= error %></div>
+<% } %>
+
+<% if (wordData) { %>
+    <div class="card shadow-sm p-4">
+        <h3 class="text-center"><%= wordData.word %></h3>
+
+        <% if (wordData.phonetics.length > 0) { %>
+            <h4>Phonetics:</h4>
+            <ul>
+                <% wordData.phonetics.forEach(phonetic => { %>
+                    <li>
+                        <strong>Text:</strong> <%= phonetic.text || "No phonetic available" %>
+                        <% if (phonetic.audio) { %>
+                            <br><audio controls>
+                                <source src="<%= phonetic.audio %>" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        <% } %>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+
+        <% if (wordData.meanings.length > 0) { %>
+            <h4>Meanings:</h4>
+            <% wordData.meanings.forEach(meaning => { %>
+                <h5><%= meaning.partOfSpeech %></h5>
+                <ul>
+                    <% meaning.definitions.forEach(definition => { %>
+                        <li>
+                            <strong>Definition:</strong> <%= definition.definition %>
+                            <% if (definition.example) { %>
+                                <br><em>Example:</em> "<%= definition.example %>"
+                            <% } %>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% }); %>
+        <% } %>
+
+        <% if (wordData.sourceUrls.length > 0) { %>
+            <h4>Sources:</h4>
+            <ul>
+                <% wordData.sourceUrls.forEach(url => { %>
+                    <li><a href="<%= url %>" target="_blank"><%= url %></a></li>
+                <% }); %>
+            </ul>
+        <% } %>
+    </div>
+<% } else { %>
+    <p class="text-center text-muted">No definition found.</p>
+<% } %>
