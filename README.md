@@ -3,7 +3,7 @@
 
 This is a simple **Book & Dictionary Search App** built with **Node.js, Express, EJS**, and **Bootstrap**.
 It allows users to search for books using the **Google Books API** and look up word definitions using the **Free Dictionary API**.
-
+![App Logo](./public/book&dictionary.jpg)
 ---
 
 ## 🚀 Features
@@ -100,5 +100,5 @@ npm install ejs-mate
 	•	Google Books API
 	•	Free Dictionary API
 	•	Bootstrap
-  
+
 
