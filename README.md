@@ -94,8 +94,9 @@ nodemon server.js
 	•	Ensure ejs-mate is installed:
 ```
 npm install ejs-mate
+
 ```
-	•	Restart the server.
+•	Restart the server.
 ❤️ Acknowledgements
 	•	Google Books API
 	•	Free Dictionary API
