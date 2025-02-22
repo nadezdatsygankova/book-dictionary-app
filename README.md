@@ -97,6 +97,7 @@ npm install ejs-mate
 
 ```
 •	Restart the server.
+
 ❤️ Acknowledgements
 	•	Google Books API
 	•	Free Dictionary API
